@@ -11,9 +11,9 @@ import (
 
 func main() {
 
-    r := InsertValueToDB()
-	
-    fmt.Println(r)
+	r := InsertValueToDB()
+
+	fmt.Println(r)
 }
 
 // GetPostgresURL builds the PostgreSQL URL
@@ -40,7 +40,7 @@ func GetPostgresURL(username string, password string, host string, dbname string
 // InsertValueToDB writes a value to the database
 func InsertValueToDB() string {
 
-	psqlInfo := GetPostgresURL("scheme", "", "host:<port>", "<database_name>", <sslmode>)
+    psqlInfo := GetPostgresURL(<role>, <password>, <host:port>, <db_name>, <ssl_mode>)
 
 	// Validating arguments provided to psqlInfo
 	db, err := sql.Open("postgres", psqlInfo)
@@ -49,12 +49,13 @@ func InsertValueToDB() string {
 	}
 	defer db.Close()
 
-	// Establishing connection to the Database
-	fmt.Println("Establishing Connection to the database...")
+	// Verifying connection to the Database
+	fmt.Println("Verifying Connection to the database...")
 	err = db.Ping()
 	if err != nil {
 		panic(err)
 	}
+	fmt.Println("Connection Verified!")
 
 	sqlStatement := `
      INSERT INTO users (age, email, first_name, last_name)
