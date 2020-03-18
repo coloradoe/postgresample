@@ -11,7 +11,9 @@ import (
 
 func main() {
 
-	fmt.Println(InsertValueToDB())
+    r := InsertValueToDB()
+	
+    fmt.Println(r)
 }
 
 // GetPostgresURL builds the PostgreSQL URL
